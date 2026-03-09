@@ -97,7 +97,60 @@ if CLIENT then
 		}
 	)
 
-	function BuildMenu(PNL)
+	local function ServerBool(cmd_server,cmd_client)
+
+		local srv_shoulder = GetConVar(cmd_server):GetInt()
+
+		if srv_shoulder == 0 then
+			return IntToBool(GetConVar( cmd_client ):GetInt())
+		elseif srv_shoulder == 1 then
+			return true
+		elseif srv_shoulder == 2 then
+			return false
+		end
+	end
+
+	local function ServerNumber(cmd_server_max,cmd_server_min,cmd_client,default)
+
+		local value = default
+
+		local SrvMax = GetConVar( cmd_server_max ):GetFloat() or 0
+		local SrvMin = GetConVar( cmd_server_min ):GetFloat() or 0
+
+		local ClnVal = GetConVar( cmd_client ):GetFloat() or default
+
+		if SrvMax != 0 and SrvMin != 0 then
+			if SrvMin > SrvMax then return ClnVal end
+
+			if ClnVal <= SrvMax and ClnVal >= SrvMin then
+				value = ClnVal
+			else
+				value = SrvMax
+			end
+		else
+			value = ClnVal
+		end
+
+		return value
+	end
+
+	local function IntToBool(it)
+		if it == 1 then
+			return true
+		else
+			return false
+		end
+	end
+
+	local function BoolToInt(bol)
+		if bol then
+			return 1
+		else
+			return 0
+		end
+	end
+
+	local function BuildMenu(PNL)
 
 		if Editor.PANEL != nil then
 			Editor.PANEL:Remove()
@@ -828,59 +881,6 @@ if CLIENT then
 		Editor.PANEL.CreedImg:SetImage( "icon32/zoom_extend.png" )
 		Editor.PANEL.CreedImg.DoClick = function()
 			gui.OpenURL("http://steamcommunity.com/id/edunad")
-		end
-	end
-
-	function ServerBool(cmd_server,cmd_client)
-
-		local srv_shoulder = GetConVar(cmd_server):GetInt()
-
-		if srv_shoulder == 0 then
-			return IntToBool(GetConVar( cmd_client ):GetInt())
-		elseif srv_shoulder == 1 then
-			return true
-		elseif srv_shoulder == 2 then
-			return false
-		end
-	end
-
-	function ServerNumber(cmd_server_max,cmd_server_min,cmd_client,default)
-
-		local value = default
-
-		local SrvMax = GetConVar( cmd_server_max ):GetFloat() or 0
-		local SrvMin = GetConVar( cmd_server_min ):GetFloat() or 0
-
-		local ClnVal = GetConVar( cmd_client ):GetFloat() or default
-
-		if SrvMax != 0 and SrvMin != 0 then
-			if SrvMin > SrvMax then return ClnVal end
-
-			if ClnVal <= SrvMax and ClnVal >= SrvMin then
-				value = ClnVal
-			else
-				value = SrvMax
-			end
-		else
-			value = ClnVal
-		end
-
-		return value
-	end
-
-	function IntToBool(it)
-		if it == 1 then
-			return true
-		else
-			return false
-		end
-	end
-
-	function BoolToInt(bol)
-		if bol then
-			return 1
-		else
-			return 0
 		end
 	end
 
