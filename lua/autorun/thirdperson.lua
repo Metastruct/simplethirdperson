@@ -9,30 +9,31 @@ A simple Thirdperson Addon. Press C (context menu) then Thirdperson
 */
 
 // SHARED
-CreateConVar("simple_thirdperson_maxdistance", "0", { FCVAR_REPLICATED } , "Sets the max distance the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_maxpitch", "0", { FCVAR_REPLICATED } , "Sets the max pitch the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_maxright", "0", { FCVAR_REPLICATED } , "Sets the max right the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_maxyaw", "0", { FCVAR_REPLICATED } , "Sets the max yaw the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_maxup", "0", { FCVAR_REPLICATED } , "Sets the min up the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_maxdistance", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the max distance the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_maxpitch", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the max pitch the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_maxright", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the max right the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_maxyaw", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the max yaw the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_maxup", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min up the player can go (0 = disabled)")
 
-CreateConVar("simple_thirdperson_mindistance", "0", { FCVAR_REPLICATED } , "Sets the min distance the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_minpitch", "0", { FCVAR_REPLICATED } , "Sets the min pitch the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_minright", "0", { FCVAR_REPLICATED } , "Sets the min right the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_minyaw", "0", { FCVAR_REPLICATED } , "Sets the min yaw the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_minup", "0", { FCVAR_REPLICATED } , "Sets the min up the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_mindistance", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min distance the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_minpitch", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min pitch the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_minright", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min right the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_minyaw", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min yaw the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_minup", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min up the player can go (0 = disabled)")
 
-CreateConVar("simple_thirdperson_shoulder_maxdist", "0", { FCVAR_REPLICATED } , "Sets the max shoulder distance the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_shoulder_mindist", "0", { FCVAR_REPLICATED } , "Sets the min shoulder distance the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_shoulder_maxup", "0", { FCVAR_REPLICATED } , "Sets the max shoulder up the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_shoulder_minup", "0", { FCVAR_REPLICATED } , "Sets the min shoulder up the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_shoulder_maxright", "0", { FCVAR_REPLICATED } , "Sets the max shoulder right the player can go (0 = disabled)")
-CreateConVar("simple_thirdperson_shoulder_minright", "0", { FCVAR_REPLICATED } , "Sets the min shoulder right the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_shoulder_maxdist", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the max shoulder distance the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_shoulder_mindist", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min shoulder distance the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_shoulder_maxup", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the max shoulder up the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_shoulder_minup", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min shoulder up the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_shoulder_maxright", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the max shoulder right the player can go (0 = disabled)")
+CreateConVar("simple_thirdperson_shoulder_minright", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Sets the min shoulder right the player can go (0 = disabled)")
 
-CreateConVar("simple_thirdperson_forcecollide", "0", { FCVAR_REPLICATED } , "Forces the player to use collide or not (0 = disabled,1 = on,2 = off)")
-CreateConVar("simple_thirdperson_forceshoulder", "0", { FCVAR_REPLICATED } , "Forces the player to use shoulder view or not (0 = disabled,1 = on,2 = off)")
-CreateConVar("simple_thirdperson_forcesmooth", "0", { FCVAR_REPLICATED } , "Forces the player to use smooth view or not (0 = disabled,1 = on,2 = off)")
+CreateConVar("simple_thirdperson_forcecollide", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Forces the player to use collide or not (0 = disabled,1 = on,2 = off)")
+CreateConVar("simple_thirdperson_forceshoulder", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE} , "Forces the player to use shoulder view or not (0 = disabled,1 = on,2 = off)")
+CreateConVar("simple_thirdperson_forcesmooth", "0", { FCVAR_REPLICATED, FCVAR_ARCHIVE } , "Forces the player to use smooth view or not (0 = disabled,1 = on,2 = off)")
 
-if CLIENT then
+if CLIENT then	
+
 	CreateClientConVar( "simple_thirdperson_enabled", "0", true, false )
 	
 	CreateClientConVar( "simple_thirdperson_smooth", "1", true, false )
@@ -65,30 +66,27 @@ if CLIENT then
 	CreateClientConVar( "simple_thirdperson_custom_crosshair_g", "230", true, false )
 	CreateClientConVar( "simple_thirdperson_custom_crosshair_b", "0", true, false )
 	CreateClientConVar( "simple_thirdperson_custom_crosshair_a", "240", true, false )
-end
-
-if CLIENT then	
 	
 	local Editor = {}
 
 	Editor.DelayPos = nil
 	Editor.ViewPos = nil
 	
-	Editor.ShoulderToggle = GetConVar( "simple_thirdperson_shoulderview" ):GetBool()
-	Editor.EnableToggle = GetConVar( "simple_thirdperson_enabled" ):GetBool()
-	Editor.CollisionToggle = GetConVar( "simple_thirdperson_collision" ):GetBool()
-	Editor.FOVToggle = GetConVar( "simple_thirdperson_fov_smooth" ):GetBool()
-	Editor.SmoothToggle = GetConVar( "simple_thirdperson_smooth" ):GetBool()
-	Editor.ShoulderBumpToggle = GetConVar( "simple_thirdperson_shoulderview_bump" ):GetBool()
+	Editor.ShoulderToggle = GetConVar( "simple_thirdperson_shoulderview" ):GetBool() or false
+	Editor.EnableToggle = GetConVar( "simple_thirdperson_enabled" ):GetBool() or false
+	Editor.CollisionToggle = GetConVar( "simple_thirdperson_collision" ):GetBool() or false
+	Editor.FOVToggle = GetConVar( "simple_thirdperson_fov_smooth" ):GetBool() or false
+	Editor.SmoothToggle = GetConVar( "simple_thirdperson_smooth" ):GetBool() or true
+	Editor.ShoulderBumpToggle = GetConVar( "simple_thirdperson_shoulderview_bump" ):GetBool() or false
 	
-	Editor.CustomCrossToggle = GetConVar( "simple_thirdperson_enable_custom_crosshair" ):GetBool()
-	Editor.CrossToggle = GetConVar( "simple_thirdperson_hide_crosshair" ):GetBool()
+	Editor.CustomCrossToggle = GetConVar( "simple_thirdperson_enable_custom_crosshair" ):GetBool() or false
+	Editor.CrossToggle = GetConVar( "simple_thirdperson_hide_crosshair" ):GetBool() or false
 	
 	list.Set(
 		"DesktopWindows", 
 		"ThirdPerson",
 		{
-			title = "Simple Third Person",
+			title = "Simple ThirdPerson",
 			icon = "icon32/zoom_extend.png",
 			width = 300,
 			height = 170,
@@ -108,6 +106,7 @@ if CLIENT then
 		if PNL == nil then	
 			PNL = vgui.Create( "DFrame" )
 			PNL:SetSize( 300, 170 )
+			PNL:SetTitle( "Simple ThirdPerson" )
 			PNL:SetVisible( true )
 			PNL:SetDraggable( true )
 			PNL:ShowCloseButton( true )
@@ -852,11 +851,11 @@ if CLIENT then
 		local SrvMax = GetConVar( cmd_server_max ):GetFloat() or 0
 		local SrvMin = GetConVar( cmd_server_min ):GetFloat() or 0
 		
-		local ClnVal = GetConVar( cmd_client ):GetFloat()
-		
-		if SrvMin > SrvMax then return ClnVal end
+		local ClnVal = GetConVar( cmd_client ):GetFloat() or default
 		
 		if SrvMax != 0 and SrvMin != 0 then
+			if SrvMin > SrvMax then return ClnVal end
+			
 			if ClnVal <= SrvMax and ClnVal >= SrvMin then
 				value = ClnVal
 			else
@@ -869,8 +868,8 @@ if CLIENT then
 		return value
 	end
 	
-	function IntToBool(int)
-		if int == 1 then
+	function IntToBool(it)
+		if it == 1 then
 			return true
 		else
 			return false
@@ -958,9 +957,10 @@ if CLIENT then
 		
 	end)
 	
-	hook.Add("CalcView","SimpleTP.CameraView",function(ply, pos, angles, fov)
-	
-		if GetConVar( "simple_thirdperson_enabled" ):GetBool() and IsValid(ply) then
+	hook.Add("CalcView","SimpleTP.Camera.View",function(ply, pos, angles, fov)
+		local isEnabled = GetConVar( "simple_thirdperson_enabled" ):GetBool() or false
+		
+		if isEnabled and IsValid(ply) then
 		
 			if Editor.DelayPos == nil then
 				Editor.DelayPos = ply:EyePos()
@@ -1050,9 +1050,23 @@ if CLIENT then
 			view.fov = fov
 		 
 			return view
-
 		end
 	end)
 
-	concommand.Add( "simple_thirdperson_menu",function() BuildMenu(nil) end)
+	concommand.Add( "simple_thirdperson	_menu",function() BuildMenu(nil) end)
+	concommand.Add( "simple_thirdperson_dumpHook",function()
+	print("====== Simple ThirdPerson Dump ======")
+		for k,v in pairs(hook.GetTable()) do
+			if k == "CalcView" or k == "ShouldDrawLocalPlayer" or k == "HUDShouldDraw" then
+				print("\n------- ".. k .. " -------\n")
+				for k2,v2 in pairs(v) do
+					PrintTable(debug.getinfo(v2))
+					print("#####--#####")
+				end
+			end
+		end
+	print("\n====== +++++++++++++++++++++++ ======")
+	end)
+	
+	print("[SimpleThirdPerson] Addon Loaded")
 end
