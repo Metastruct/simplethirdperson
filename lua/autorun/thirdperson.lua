@@ -1053,7 +1053,7 @@ if CLIENT then
 		end
 	end)
 
-	concommand.Add( "simple_thirdperson	_menu",function() BuildMenu(nil) end)
+	concommand.Add( "simple_thirdperson_menu",function() BuildMenu(nil) end)
 	concommand.Add( "simple_thirdperson_dumpHook",function()
 	print("====== Simple ThirdPerson Dump ======")
 		for k,v in pairs(hook.GetTable()) do
