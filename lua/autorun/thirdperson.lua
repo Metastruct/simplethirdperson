@@ -86,7 +86,7 @@ if CLIENT then
 		"DesktopWindows",
 		"ThirdPerson",
 		{
-			title = "Simple ThirdPerson",
+			title = "Simple Third Person",
 			icon = "icon32/zoom_extend.png",
 			width = 300,
 			height = 170,
