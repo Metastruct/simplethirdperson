@@ -72,15 +72,15 @@ if CLIENT then
 	Editor.DelayPos = nil
 	Editor.ViewPos = nil
 
-	Editor.ShoulderToggle = GetConVar( "simple_thirdperson_shoulderview" ):GetBool() or false
-	Editor.EnableToggle = GetConVar( "simple_thirdperson_enabled" ):GetBool() or false
-	Editor.CollisionToggle = GetConVar( "simple_thirdperson_collision" ):GetBool() or false
-	Editor.FOVToggle = GetConVar( "simple_thirdperson_fov_smooth" ):GetBool() or false
-	Editor.SmoothToggle = GetConVar( "simple_thirdperson_smooth" ):GetBool() or true
-	Editor.ShoulderBumpToggle = GetConVar( "simple_thirdperson_shoulderview_bump" ):GetBool() or false
+	Editor.ShoulderToggle = GetConVar( "simple_thirdperson_shoulderview" ):GetBool()
+	Editor.EnableToggle = GetConVar( "simple_thirdperson_enabled" ):GetBool()
+	Editor.CollisionToggle = GetConVar( "simple_thirdperson_collision" ):GetBool()
+	Editor.FOVToggle = GetConVar( "simple_thirdperson_fov_smooth" ):GetBool()
+	Editor.SmoothToggle = GetConVar( "simple_thirdperson_smooth" ):GetBool()
+	Editor.ShoulderBumpToggle = GetConVar( "simple_thirdperson_shoulderview_bump" ):GetBool()
 
-	Editor.CustomCrossToggle = GetConVar( "simple_thirdperson_enable_custom_crosshair" ):GetBool() or false
-	Editor.CrossToggle = GetConVar( "simple_thirdperson_hide_crosshair" ):GetBool() or false
+	Editor.CustomCrossToggle = GetConVar( "simple_thirdperson_enable_custom_crosshair" ):GetBool()
+	Editor.CrossToggle = GetConVar( "simple_thirdperson_hide_crosshair" ):GetBool()
 
 	list.Set(
 		"DesktopWindows",
@@ -134,8 +134,8 @@ if CLIENT then
 		return value
 	end
 
-	local function IntToBool(it)
-		if it == 1 then
+	local function IntToBool(int)
+		if int == 1 then
 			return true
 		else
 			return false
@@ -159,7 +159,7 @@ if CLIENT then
 		if PNL == nil then
 			PNL = vgui.Create( "DFrame" )
 			PNL:SetSize( 300, 170 )
-			PNL:SetTitle( "Simple ThirdPerson" )
+			PNL:SetTitle( "Simple Third Person" )
 			PNL:SetVisible( true )
 			PNL:SetDraggable( true )
 			PNL:ShowCloseButton( true )
@@ -958,9 +958,7 @@ if CLIENT then
 	end)
 
 	hook.Add("CalcView","SimpleTP.Camera.View",function(ply, pos, angles, fov)
-		local isEnabled = GetConVar( "simple_thirdperson_enabled" ):GetBool() or false
-
-		if isEnabled and IsValid(ply) then
+		if GetConVar( "simple_thirdperson_enabled" ):GetBool() and IsValid(ply) then
 
 			if Editor.DelayPos == nil then
 				Editor.DelayPos = ply:EyePos()
@@ -1053,20 +1051,5 @@ if CLIENT then
 		end
 	end)
 
-	concommand.Add( "simple_thirdperson_menu",function() BuildMenu(nil) end)
-	concommand.Add( "simple_thirdperson_dumpHook",function()
-	print("====== Simple ThirdPerson Dump ======")
-		for k,v in pairs(hook.GetTable()) do
-			if k == "CalcView" or k == "ShouldDrawLocalPlayer" or k == "HUDShouldDraw" then
-				print("\n------- ".. k .. " -------\n")
-				for k2,v2 in pairs(v) do
-					PrintTable(debug.getinfo(v2))
-					print("#####--#####")
-				end
-			end
-		end
-	print("\n====== +++++++++++++++++++++++ ======")
-	end)
-
-	print("[SimpleThirdPerson] Addon Loaded")
+	concommand.Add( "simple_thirdperson_menu", BuildMenu)
 end
