@@ -82,6 +82,22 @@ if CLIENT then
 	Editor.CustomCrossToggle = GetConVar( "simple_thirdperson_enable_custom_crosshair" ):GetBool()
 	Editor.CrossToggle = GetConVar( "simple_thirdperson_hide_crosshair" ):GetBool()
 
+	local function IntToBool(int)
+		if int == 1 then
+			return true
+		else
+			return false
+		end
+	end
+
+	local function BoolToInt(bol)
+		if bol then
+			return 1
+		else
+			return 0
+		end
+	end
+
 	local function ServerBool(cmd_server,cmd_client)
 
 		local srv_shoulder = GetConVar(cmd_server):GetInt()
@@ -117,22 +133,6 @@ if CLIENT then
 		end
 
 		return value
-	end
-
-	local function IntToBool(int)
-		if int == 1 then
-			return true
-		else
-			return false
-		end
-	end
-
-	local function BoolToInt(bol)
-		if bol then
-			return 1
-		else
-			return 0
-		end
 	end
 
 	local function BuildMenu(PNL)
