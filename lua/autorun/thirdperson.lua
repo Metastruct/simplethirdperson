@@ -82,21 +82,6 @@ if CLIENT then
 	Editor.CustomCrossToggle = GetConVar( "simple_thirdperson_enable_custom_crosshair" ):GetBool()
 	Editor.CrossToggle = GetConVar( "simple_thirdperson_hide_crosshair" ):GetBool()
 
-	list.Set(
-		"DesktopWindows",
-		"ThirdPerson",
-		{
-			title = "Simple Third Person",
-			icon = "icon32/zoom_extend.png",
-			width = 300,
-			height = 170,
-			onewindow = true,
-			init = function(icn, pnl)
-				BuildMenu(pnl)
-			end
-		}
-	)
-
 	local function ServerBool(cmd_server,cmd_client)
 
 		local srv_shoulder = GetConVar(cmd_server):GetInt()
@@ -1050,6 +1035,21 @@ if CLIENT then
 			return view
 		end
 	end)
+
+	list.Set(
+		"DesktopWindows",
+		"ThirdPerson",
+		{
+			title = "Simple Third Person",
+			icon = "icon32/zoom_extend.png",
+			width = 300,
+			height = 170,
+			onewindow = true,
+			init = function(icn, pnl)
+				BuildMenu(pnl)
+			end
+		}
+	)
 
 	concommand.Add( "simple_thirdperson_menu", BuildMenu)
 end
