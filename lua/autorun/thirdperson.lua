@@ -1051,5 +1051,7 @@ if CLIENT then
 		}
 	)
 
-	concommand.Add("simple_thirdperson_menu", BuildMenu)
+	concommand.Add("simple_thirdperson_menu", function()
+		BuildMenu()
+	end)
 end
